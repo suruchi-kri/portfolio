@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream: #F7F3ED;
+  --ink: #1C1916;
+  --rust: #C44B2A;
+  --sage: #6A9270;
+  --gold: #C9973A;
+  --pale: #EDE8DF;
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-dm-mono);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-rust: var(--rust);
+  --color-sage: var(--sage);
+  --color-gold: var(--gold);
+  --color-pale: var(--pale);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-dm-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-mono), 'DM Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* Noise texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.35;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Spinning badge */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* Pulse for availability dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* Ticker */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Selection styling */
+::selection {
+  background: var(--rust);
+  color: var(--cream);
+}
+
+/* Hide scrollbar for testimonials */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { scrollbar-width: none; }
+
+/* Mobile responsive overrides */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem !important; }
+  nav .na { display: none; }
+
+  #hero { padding: 0 1.5rem 3rem !important; }
+
+  #work { padding: 5rem 1.5rem 4rem !important; }
+
+  #about {
+    grid-template-columns: 1fr !important;
+    padding: 5rem 1.5rem !important;
+    gap: 3rem !important;
+  }
+
+  #process { padding: 5rem 1.5rem !important; }
+  #process > div:last-child {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+
+  #testimonials { padding: 5rem 1.5rem !important; }
+
+  #contact { padding: 5rem 1.5rem 4rem !important; }
+
+  footer {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    text-align: center !important;
+    padding: 1.4rem 1.5rem !important;
+  }
 }

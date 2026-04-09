@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Suruchi Kumari — Visual Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,700;1,9..144,200;1,9..144,600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #F7F3ED; --ink: #1C1916; --rust: #C44B2A;
+    --sage: #6A9270; --gold: #C9973A; --pale: #EDE8DF;
+    --mono: 'DM Mono', monospace; --serif: 'Fraunces', serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--mono); cursor: none; overflow-x: hidden; }
+
+  #cursor { width:10px; height:10px; background:var(--rust); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .3s,height .3s; mix-blend-mode:multiply; }
+  #cursor-ring { width:38px; height:38px; border:1.5px solid var(--ink); border-radius:50%; position:fixed; top:0; left:0; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); opacity:.4; }
+  body.hov #cursor { width:6px; height:6px; }
+  body.hov #cursor-ring { width:54px; height:54px; opacity:.15; }
+
+  body::after { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:9990; opacity:.35; }
+
+  nav { position:fixed; top:0; left:0; right:0; padding:1.4rem 3rem; display:flex; justify-content:space-between; align-items:center; z-index:100; mix-blend-mode:multiply; }
+  .nl { font-family:var(--serif); font-weight:700; font-size:1.05rem; letter-spacing:-.02em; text-decoration:none; color:var(--ink); }
+  .nm { display:flex; gap:2.5rem; list-style:none; }
+  .nm a { font-size:.7rem; letter-spacing:.13em; text-transform:uppercase; color:var(--ink); text-decoration:none; opacity:.5; transition:opacity .2s; }
+  .nm a:hover { opacity:1; }
+  .na { display:flex; align-items:center; gap:.45rem; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; opacity:.55; }
+  .dot { width:7px; height:7px; background:var(--sage); border-radius:50%; animation:pulse 2.2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.75)} }
+
+  #hero { min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding:0 3rem 4.5rem; position:relative; overflow:hidden; }
+  .hbg { position:absolute; top:50%; left:0; right:0; transform:translateY(-55%); overflow:hidden; pointer-events:none; }
+  .hbgi { display:flex; white-space:nowrap; animation:mq 26s linear infinite; }
+  .hbgi span { font-family:var(--serif); font-size:clamp(5rem,13vw,12rem); font-weight:700; color:transparent; -webkit-text-stroke:1.5px var(--ink); opacity:.06; padding-right:2rem; letter-spacing:-.04em; }
+  @keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .bdg { position:absolute; top:28%; right:5.5%; width:115px; height:115px; animation:sp 22s linear infinite; }
+  @keyframes sp { to{transform:rotate(360deg)} }
+  .ey { font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; opacity:.45; margin-bottom:1.3rem; }
+  .ht { font-family:var(--serif); font-size:clamp(3.2rem,7vw,6.8rem); font-weight:200; line-height:.95; letter-spacing:-.04em; max-width:820px; margin-bottom:3rem; }
+  .ht em { font-style:italic; color:var(--rust); font-weight:600; }
+  .hm { display:flex; align-items:center; gap:3rem; flex-wrap:wrap; }
+  .cta { display:inline-flex; align-items:center; gap:.7rem; background:var(--ink); color:var(--cream); padding:.9rem 2rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; transition:background .2s,transform .2s; }
+  .cta:hover { background:var(--rust); transform:translateY(-2px); }
+  .cta svg { width:13px; transition:transform .2s; }
+  .cta:hover svg { transform:translateX(4px); }
+  .hs strong { display:block; font-family:var(--serif); font-size:1.5rem; font-weight:700; }
+  .hs { font-size:.7rem; opacity:.45; letter-spacing:.05em; }
+
+  .tk { background:var(--ink); padding:.9rem 0; overflow:hidden; }
+  .tki { display:flex; white-space:nowrap; animation:mq 16s linear infinite; }
+  .tki span { font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--cream); opacity:.6; padding:0 2rem; }
+  .tki span.g { color:var(--gold); opacity:1; }
+
+  #work { padding:7rem 3rem 5rem; }
+  .sh { display:flex; align-items:baseline; gap:1.5rem; margin-bottom:3.5rem; }
+  .sl { font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; opacity:.4; }
+  .st { font-family:var(--serif); font-size:clamp(2rem,4vw,3.2rem); font-weight:200; letter-spacing:-.03em; }
+  .sc { font-family:var(--serif); font-size:.85rem; opacity:.28; }
+  .flt { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:3.5rem; }
+  .fb { padding:.45rem 1.1rem; border:1px solid rgba(28,25,22,.18); background:transparent; color:var(--ink); font-family:var(--mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; cursor:none; transition:all .2s; }
+  .fb:hover,.fb.active { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+
+  .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:1.4rem; }
+  .proj { position:relative; overflow:hidden; background:var(--pale); cursor:none; transition:transform .45s cubic-bezier(.22,1,.36,1); }
+  .proj:hover { transform:translateY(-7px); }
+  .p1{grid-column:span 7;} .p2{grid-column:span 5;} .p3{grid-column:span 5;} .p4{grid-column:span 4;} .p5{grid-column:span 3;} .p6{grid-column:span 6;} .p7{grid-column:span 6;}
+  .pimg { position:relative; overflow:hidden; }
+  .p1 .pimg,.p6 .pimg,.p7 .pimg { aspect-ratio:16/9; }
+  .p2 .pimg,.p3 .pimg { aspect-ratio:4/3; }
+  .p4 .pimg,.p5 .pimg { aspect-ratio:1/1; }
+  .sw { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:3.5rem; font-weight:700; color:rgba(255,255,255,.12); transition:transform .5s cubic-bezier(.22,1,.36,1); user-select:none; }
+  .proj:hover .sw { transform:scale(1.05); }
+  .ov { position:absolute; inset:0; background:var(--ink); opacity:0; transition:opacity .3s; display:flex; align-items:center; justify-content:center; }
+  .proj:hover .ov { opacity:.84; }
+  .vw { font-family:var(--mono); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--cream); border:1px solid rgba(247,243,237,.3); padding:.65rem 1.4rem; transform:translateY(10px); transition:transform .3s .04s; }
+  .proj:hover .vw { transform:translateY(0); }
+  .pi { padding:1.1rem 1.3rem 1.4rem; }
+  .pc { font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; opacity:.38; margin-bottom:.35rem; }
+  .pn { font-family:var(--serif); font-size:1.08rem; font-weight:700; letter-spacing:-.02em; }
+  .pv { font-size:.62rem; opacity:.3; margin-top:.3rem; }
+
+  #about { padding:7rem 3rem; display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; background:var(--pale); }
+  .af { aspect-ratio:3/4; background:var(--cream); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:8rem; color:rgba(28,25,22,.06); }
+  .af::after { content:''; position:absolute; inset:0; border:1px solid rgba(28,25,22,.08); }
+  .ab { position:absolute; bottom:-1.2rem; right:-1.2rem; width:96px; height:96px; background:var(--rust); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:.72rem; font-weight:700; color:var(--cream); text-align:center; line-height:1.3; padding:.8rem; }
+  .ae { font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; opacity:.4; margin-bottom:1.4rem; }
+  .ah { font-family:var(--serif); font-size:clamp(1.8rem,3vw,2.8rem); font-weight:200; letter-spacing:-.03em; line-height:1.05; margin-bottom:1.6rem; }
+  .ah em { font-style:italic; color:var(--rust); font-weight:600; }
+  .ap { font-size:.82rem; line-height:1.85; opacity:.6; margin-bottom:2rem; max-width:440px; }
+  .chips { display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:2.2rem; }
+  .chip { padding:.3rem .85rem; border:1px solid rgba(28,25,22,.13); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; border-radius:999px; transition:all .2s; }
+  .chip:hover { background:var(--ink); color:var(--cream); border-color:var(--ink); }
+  .tr { display:flex; gap:1.2rem; align-items:center; flex-wrap:wrap; opacity:.4; margin-bottom:2.5rem; }
+  .tr span { font-size:.65rem; letter-spacing:.08em; text-transform:uppercase; }
+  .td { width:4px; height:4px; background:var(--ink); border-radius:50%; }
+
+  #process { padding:7rem 3rem; background:var(--ink); color:var(--cream); }
+  #process .sl,#process .st { color:var(--cream); }
+  .pg { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:4rem; }
+  .ps { padding:2rem; border:1px solid rgba(247,243,237,.08); position:relative; transition:border-color .3s,background .3s; }
+  .ps:hover { border-color:rgba(247,243,237,.25); background:rgba(247,243,237,.03); }
+  .pn2 { font-family:var(--serif); font-size:3.5rem; font-weight:700; opacity:.08; line-height:1; margin-bottom:1.2rem; letter-spacing:-.04em; }
+  .pt { font-family:var(--serif); font-size:1.2rem; font-weight:700; margin-bottom:.7rem; letter-spacing:-.02em; }
+  .pb { font-size:.76rem; line-height:1.8; opacity:.45; }
+  .pic { position:absolute; top:2rem; right:2rem; font-size:1.1rem; opacity:.25; }
+
+  #testimonials { padding:7rem 3rem; }
+  .tt { display:flex; gap:1.4rem; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding-bottom:1rem; }
+  .tt::-webkit-scrollbar { display:none; }
+  .tc { min-width:340px; scroll-snap-align:start; border:1px solid rgba(28,25,22,.09); padding:2.2rem; background:var(--pale); flex-shrink:0; transition:transform .3s; }
+  .tc:hover { transform:translateY(-5px); }
+  .tq { font-family:var(--serif); font-size:1rem; line-height:1.75; font-style:italic; font-weight:200; margin-bottom:1.6rem; opacity:.78; }
+  .ta span { font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; opacity:.4; }
+  .ta strong { display:block; font-family:var(--serif); font-size:.95rem; font-weight:700; margin-bottom:.2rem; }
+
+  #contact { padding:8rem 3rem 5rem; text-align:center; position:relative; overflow:hidden; }
+  .cbg { position:absolute; bottom:-3rem; left:50%; transform:translateX(-50%); font-family:var(--serif); font-size:clamp(5rem,17vw,15rem); font-weight:700; letter-spacing:-.05em; color:transparent; -webkit-text-stroke:1px rgba(28,25,22,.06); white-space:nowrap; pointer-events:none; }
+  .cav { font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; opacity:.4; margin-bottom:1.5rem; display:flex; align-items:center; justify-content:center; gap:.5rem; }
+  .ch { font-family:var(--serif); font-size:clamp(2.5rem,7vw,7rem); font-weight:200; letter-spacing:-.04em; line-height:.95; margin-bottom:2.5rem; position:relative; z-index:1; }
+  .ch em { font-style:italic; color:var(--rust); font-weight:600; }
+  .ce { font-family:var(--serif); font-size:clamp(.9rem,2.2vw,1.6rem); font-weight:200; color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--rust); padding-bottom:.15rem; transition:color .2s; position:relative; z-index:1; }
+  .ce:hover { color:var(--rust); }
+  .soc { display:flex; justify-content:center; gap:2.5rem; margin-top:3.5rem; position:relative; z-index:1; }
+  .soc a { font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink); text-decoration:none; opacity:.38; transition:opacity .2s; }
+  .soc a:hover { opacity:1; }
+
+  footer { background:var(--ink); color:var(--cream); padding:1.4rem 3rem; display:flex; justify-content:space-between; align-items:center; font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; opacity:.55; }
+
+  .rv { opacity:0; transform:translateY(26px); transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1); }
+  .rv.in { opacity:1; transform:none; }
+  .d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+  @media(max-width:900px){
+    nav{padding:1rem 1.5rem;} .na{display:none;} .nm li:nth-child(n+3){display:none;}
+    #hero{padding:0 1.5rem 3rem;} .bdg{display:none;}
+    #work{padding:5rem 1.5rem 4rem;} .grid{display:flex;flex-direction:column;}
+    #about{grid-template-columns:1fr;padding:5rem 1.5rem;gap:3rem;}
+    #process{padding:5rem 1.5rem;} .pg{grid-template-columns:1fr 1fr;gap:1rem;}
+    #testimonials{padding:5rem 1.5rem;} #contact{padding:5rem 1.5rem 4rem;}
+    footer{flex-direction:column;gap:.5rem;text-align:center;}
+  }
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <a href="#" class="nl">SK.</a>
+  <ul class="nm">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="na"><span class="dot"></span>Available Now</div>
+</nav>
+
+<section id="hero">
+  <div class="hbg"><div class="hbgi">
+    <span>Suruchi Kumari&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span>Visual Designer&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span>Suruchi Kumari&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span>Visual Designer&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+  </div></div>
+  <div class="bdg">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="cp" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0" fill="none"/>
+      <text font-family="DM Mono,monospace" font-size="10" fill="#1C1916" opacity="0.45" letter-spacing="2.8">
+        <textPath href="#cp">DELHI · DESIGNER · FREELANCE · </textPath>
+      </text>
+      <circle cx="60" cy="60" r="9" fill="#C44B2A"/>
+    </svg>
+  </div>
+  <p class="ey rv">Suruchi Kumari — Visual Designer · New Delhi, India</p>
+  <h1 class="ht rv d1">Design that<br><em>connects</em> and<br>converts</h1>
+  <div class="hm rv d2">
+    <a href="#work" class="cta">View Work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div class="hs"><strong>1,800+</strong>Behance project views</div>
+    <div class="hs"><strong>148</strong>Appreciations</div>
+    <div class="hs"><strong>12+</strong>Projects shipped</div>
+  </div>
+</section>
+
+<div class="tk"><div class="tki">
+  <span>UI/UX</span><span class="g">✦</span><span>Branding</span><span class="g">✦</span>
+  <span>Packaging</span><span class="g">✦</span><span>Social Media</span><span class="g">✦</span>
+  <span>Web Design</span><span class="g">✦</span><span>Figma</span><span class="g">✦</span>
+  <span>Photoshop</span><span class="g">✦</span><span>WordPress</span><span class="g">✦</span>
+  <span>UI/UX</span><span class="g">✦</span><span>Branding</span><span class="g">✦</span>
+  <span>Packaging</span><span class="g">✦</span><span>Social Media</span><span class="g">✦</span>
+</div></div>
+
+<section id="work">
+  <div class="sh">
+    <span class="sl">Selected Work</span>
+    <h2 class="st rv">Projects</h2>
+    <span class="sc">(07)</span>
+  </div>
+  <div class="flt rv d1">
+    <button class="fb active" data-filter="all">All</button>
+    <button class="fb" data-filter="ux">UI / UX</button>
+    <button class="fb" data-filter="branding">Branding</button>
+    <button class="fb" data-filter="packaging">Packaging</button>
+    <button class="fb" data-filter="social">Social Media</button>
+  </div>
+  <div class="grid rv d2">
+
+    <div class="proj p1" data-cat="ux" data-url="https://www.behance.net/gallery/203849335/Blog-Website-UIUX-Design">
+      <div class="pimg"><div class="sw" style="background:linear-gradient(135deg,#1C1916,#2563A8)">Blog</div><div class="ov"><span class="vw">View on Behance ↗</span></div></div>
+      <div class="pi"><p class="pc">UI/UX · Web Design · Figma + WordPress</p><p class="pn">Blog Website — UI/UX Design</p><p class="pv">204 views · 11 appreciations — most viewed</p></div>
+    </div>
+
+    <div class="proj p2" data-cat="ux" data-url="https://www.behance.net/gallery/208693691/UIUX-App-Redesign-Splitwise">
+      <div class="pimg"><div class="sw" style="background:linear-gradient(135deg,#1F4068,#1B262C)">Split</div><div class="ov"><span class="vw">View on Behance ↗</span></div></div>
+      <div class="pi"><p class="pc">UI/UX · App Redesign</p><p class="pn">Splitwise App Redesign</p><p class="pv">162 views · 11 appreciations</p></div>
+    </div>
+
+    <div class="proj p3" data-cat="social" data-url="https://www.behance.net/gallery/211075727/Branding-Social-Media-Posts-for-Skincare-Brand">
+      <div class="pimg"><div class="sw" style="background:linear-gradient(135deg,#D4A5A5,#9E6B8A)">Skin</div><div class="ov"><span class="vw">View on Behance ↗</span></div></div>
+      <div class="pi"><p class="pc">Branding · Social Media</p><p class="pn">Skincare Brand — Social Media System</p><p class="pv">87 views · 3 appreciations</p></div>
+    </div>
+
+    <div class="proj p4" data-cat="packaging" data-url="https://www.behance.net/gallery/222087787/Nat-Habit-Packaging-Design">
+      <div class="pimg"><div class="sw" style="background:linear-gradient(135deg,#4A7C59,#C9973A)">Nat</div><div class="ov"><span class="vw">View on Behance ↗</span></div></div>
+      <div class="pi"><p class="pc">Packaging Design</p><p class="pn">Nat Habit Packaging</p><p class="pv">39 views · 3 appreciations</p></div>
+    </div>
+
+    <div class="proj p5" data-cat="branding" data-url="https://www.behance.net/gallery/218242219/Rebranding-Little-Hanoi-Egg-Coffee">
+      <div class="pimg"><div class="sw" style="background:linear-gradient(135deg,#C44B2A,#F5C842)">LH</div><div class="ov"><span class="vw">View on Behance ↗</span></div></div>
+      <div class="pi"><p class="pc">Rebranding</p><p class="pn">Little Hanoi Egg Coffee</p><p class="pv">72 views · 5 appreciations</p></div>
+    </div>
+
+    <div class="proj p6" data-cat="social" data-url="https://www.behance.net/gallery/221777787/Product-Launch-Campaign-for-a-Skincare-Brand">
+      <div class="pimg"><div class="sw" style="background:linear-gradient(135deg,#F9E4D4,#C44B2A,#1C1916)">Launch</div><div class="ov"><span class="vw">View on Behance ↗</span></div></div>
+      <div class="pi"><p class="pc">Social Media · Campaign</p><p class="pn">Product Launch Campaign — Skincare Brand</p><p class="pv">80 views · 5 appreciations</p></div>
+    </div>
+
+    <div class="proj p7" data-cat="social" data-url="https://www.behance.net/gallery/216803361/Social-Media-Carousel-Sticker-Pack-for-a-Dating-App">
+      <div class="pimg"><div class="sw" style="background:linear-gradient(135deg,#FF6B6B,#9B7EA6)">Date</div><div class="ov"><span class="vw">View on Behance ↗</span></div></div>
+      <div class="pi"><p class="pc">Social Media · Illustration</p><p class="pn">Dating App — Carousel & Sticker Pack</p><p class="pv">44 views · 6 appreciations</p></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="rv">
+    <div class="af">✦<div class="ab">Open to<br>Projects</div></div>
+  </div>
+  <div>
+    <p class="ae rv">About Me</p>
+    <h2 class="ah rv d1">I turn ideas into<br><em>experiences</em><br>people remember</h2>
+    <p class="ap rv d2">I'm Suruchi — a visual designer based in New Delhi with a strong eye for brand storytelling, digital experiences, and design systems. From skincare brand identities to app UI overhauls, I work across the full visual spectrum. Currently at Transformative Learning Solutions, and always open to exciting freelance work.</p>
+    <div class="chips rv d3">
+      <span class="chip">Brand Identity</span><span class="chip">Packaging</span>
+      <span class="chip">Social Media Systems</span><span class="chip">UI/UX</span>
+      <span class="chip">Web Design</span><span class="chip">Campaigns</span>
+      <span class="chip">Art Direction</span>
+    </div>
+    <div class="tr rv d3">
+      <span>Figma</span><span class="td"></span><span>Photoshop</span><span class="td"></span>
+      <span>Illustrator</span><span class="td"></span><span>WordPress</span><span class="td"></span><span>Divi</span>
+    </div>
+    <a href="#contact" class="cta rv d4" style="width:fit-content">Work With Me <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+</section>
+
+<section id="process">
+  <div class="sh"><span class="sl">How I Work</span><h2 class="st rv">My Process</h2></div>
+  <div class="pg">
+    <div class="ps rv"><div class="pn2">01</div><span class="pic">🔍</span><h3 class="pt">Discover</h3><p class="pb">I start with a deep brief — your brand, audience, goals, and competition. Clarity here saves weeks later.</p></div>
+    <div class="ps rv d1"><div class="pn2">02</div><span class="pic">🎯</span><h3 class="pt">Define</h3><p class="pb">Strategy before pixels. Tone of voice, visual direction, and positioning get locked in before I open Figma.</p></div>
+    <div class="ps rv d2"><div class="pn2">03</div><span class="pic">⚡</span><h3 class="pt">Design</h3><p class="pb">Multiple concepts, rapid iteration, honest feedback loops. I explore widely and commit with precision.</p></div>
+    <div class="ps rv d3"><div class="pn2">04</div><span class="pic">📦</span><h3 class="pt">Deliver</h3><p class="pb">Clean files, brand guidelines, and everything you need to roll out independently. No loose ends.</p></div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="sh"><span class="sl">Kind Words</span><h2 class="st rv">What Clients Say</h2></div>
+  <div class="tt rv d1">
+    <div class="tc"><p class="tq">"Add your first testimonial here — even a short message from a client on WhatsApp works perfectly."</p><p class="ta"><strong>Client Name</strong><span>Company / Project</span></p></div>
+    <div class="tc"><p class="tq">"Reach out to 2–3 past clients and ask for a few lines. These are your most powerful social proof."</p><p class="ta"><strong>Client Name</strong><span>Company / Project</span></p></div>
+    <div class="tc"><p class="tq">"A specific outcome — 'our engagement doubled', 'sold out in a week' — is worth far more than a generic compliment."</p><p class="ta"><strong>Client Name</strong><span>Company / Project</span></p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="cbg">Hello</div>
+  <div class="cav rv"><span class="dot"></span>Available for Freelance &amp; Full-Time Remote</div>
+  <h2 class="ch rv d1">Let's make<br>something <em>great</em></h2>
+  <br><br>
+  <a href="mailto:hello@suruchikumari.com" class="ce rv d2">hello@suruchikumari.com</a>
+  <div class="soc rv d3">
+    <a href="https://www.instagram.com/suru_kri/" target="_blank">Instagram</a>
+    <a href="https://www.behance.net/suruchikumari" target="_blank">Behance</a>
+    <a href="http://linkedin.com/in/suruchi-kumari-128203160/" target="_blank">LinkedIn</a>
+    <a href="http://youtube.com/@channel/UCGnGi5tO5cHvNoLNB0xpykw" target="_blank">YouTube</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Suruchi Kumari</span>
+  <span>Visual Designer — New Delhi</span>
+  <span>Available for work ✦</span>
+</footer>
+
+<script>
+  const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+  document.querySelectorAll('a,button,.proj').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));});
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+  document.querySelectorAll('#hero .rv').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),150+i*150));
+  document.querySelectorAll('.fb').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.proj').forEach(p=>{const show=f==='all'||p.dataset.cat===f;p.style.transition='opacity .3s';p.style.opacity=show?'1':'0.15';p.style.pointerEvents=show?'':'none';});});});
+  document.querySelectorAll('.proj').forEach(p=>{p.addEventListener('click',()=>{const u=p.dataset.url;if(u)window.open(u,'_blank');});});
+</script>
+</body>
+</html>
