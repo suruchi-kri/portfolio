@@ -26,7 +26,7 @@ export function MobileHeader() {
   return (
     <>
     <div
-      className="md:hidden fixed top-0 left-0 right-0 z-[120] flex items-center justify-between"
+      className="md:hidden sticky top-0 left-0 right-0 z-[120] flex items-center justify-between"
       style={{
         height: 56,
         padding: "0 1.25rem",

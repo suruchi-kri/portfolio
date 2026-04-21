@@ -323,10 +323,12 @@ export function WorkSection() {
       {/* Mobile: stacked */}
       <div className="flex flex-col md:hidden" style={{ gap: "1.4rem" }}>
         {filteredProjects.map((project) => (
-          <div
+          <a
             key={project.id}
-            className="proj-card relative overflow-hidden bg-pale cursor-pointer"
-            onClick={() => window.open(project.behanceUrl, "_blank")}
+            href={project.behanceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="proj-card relative overflow-hidden bg-pale block no-underline text-ink"
           >
             <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -344,7 +346,7 @@ export function WorkSection() {
                 {project.title}
               </p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>

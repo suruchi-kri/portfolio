@@ -81,12 +81,11 @@ body {
   margin-bottom: 40px;
 }
 
-/* Mobile: artboard fills viewport, no dark canvas, account for fixed MobileHeader */
+/* Mobile: artboard fills viewport, no dark canvas */
 @media (max-width: 768px) {
   .canvas-scroll {
     background: var(--cream);
     background-image: none;
-    padding-top: 56px;
   }
   .artboard {
     max-width: 100%;

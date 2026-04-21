@@ -9,7 +9,6 @@ import { HorizontalRuler, VerticalRuler, RulerCorner } from "./Rulers";
 import { Canvas } from "./Canvas";
 import { PropertiesPanel } from "./PropertiesPanel";
 import { StatusBar } from "./StatusBar";
-import { MobileHeader } from "./MobileHeader";
 
 function Shell({ children }: { children: ReactNode }) {
   const { canvasRef, setActiveTool, togglePanel } = useDesignTool();
@@ -57,9 +56,6 @@ function Shell({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {/* Mobile-only header — position:fixed, hidden ≥md via its own md:hidden */}
-      <MobileHeader />
-
       <div
         className="h-screen w-screen overflow-hidden"
         style={{
