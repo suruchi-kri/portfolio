@@ -2,7 +2,7 @@
 
 import { ScrollReveal } from "./ScrollReveal";
 
-const tools = ["Figma", "Photoshop", "Illustrator", "WordPress", "Divi"];
+const tools = ["Figma", "Photoshop", "Illustrator", "WordPress", "InDesign"];
 
 export function AboutSection() {
   return (

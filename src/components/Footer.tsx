@@ -11,7 +11,7 @@ export function Footer() {
         opacity: 0.55,
       }}
     >
-      <span>&copy; 2025 Suruchi Kumari</span>
+      <span>&copy; 2026 Suruchi Kumari</span>
       <span>Visual Designer — Remote</span>
       <span>Available for work ✦</span>
     </footer>

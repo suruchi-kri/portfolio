@@ -111,6 +111,35 @@ body {
   color: var(--cream);
 }
 
+/* Hero eyebrow — inline on desktop, wrap on mobile */
+.hero-eyebrow-sep { display: inline; }
+.hero-eyebrow-break { display: none; }
+
+@media (max-width: 768px) {
+  .hero-eyebrow-sep { display: none; }
+  .hero-eyebrow-break { display: block; }
+}
+
+/* Testimonials — 2 columns desktop, 1 column mobile */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  padding-top: 2.5rem;
+  align-items: start;
+}
+.testimonial-item {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    padding-top: 2rem;
+  }
+}
+
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { scrollbar-width: none; }
 

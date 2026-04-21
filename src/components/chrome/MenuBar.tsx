@@ -39,7 +39,7 @@ export function MenuBar() {
     {
       label: "Edit",
       items: [
-        { label: "Undo Bad Design", shortcut: "⌘Z" },
+        { label: "Undo Bad Design", action: () => scrollTo("contact"), shortcut: "⌘Z" },
         { label: "Copy Style", shortcut: "⌘C" },
         { label: "Paste Inspiration", shortcut: "⌘V" },
       ],
@@ -168,12 +168,6 @@ export function MenuBar() {
         ))}
       </div>
 
-      {/* Right side — window dots */}
-      <div className="ml-auto flex items-center" style={{ gap: 6, paddingRight: 12 }}>
-        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FF5F57" }} />
-        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#FEBC2E" }} />
-        <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#28C840" }} />
-      </div>
     </div>
   );
 }

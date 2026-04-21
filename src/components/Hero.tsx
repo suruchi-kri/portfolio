@@ -117,7 +117,10 @@ export function Hero() {
             marginBottom: "1.3rem",
           }}
         >
-          Visual Designer · Open to Remote Work
+          Visual Designer
+          <span className="hero-eyebrow-sep"> · </span>
+          <span className="hero-eyebrow-break" />
+          Open to Remote Work
         </motion.p>
 
         <motion.h1
