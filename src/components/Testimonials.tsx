@@ -4,25 +4,19 @@ import { ScrollReveal } from "./ScrollReveal";
 
 const testimonials = [
   {
-    id: "1",
+    id: "tarini-fsm",
     quote:
-      "Add your first testimonial here — even a short message from a client on WhatsApp works perfectly.",
-    name: "Client Name",
-    company: "Company / Project",
+      "You are and will always be my favourite designer — not just because of your incredible aesthetics, but also because of how effortless and easy you make everything feel. It's rare to find someone as dedicated as you are, and I truly loved working with you. Whenever you're available in the future, please remember that my company's doors will always be open for you — with all my arms and heart wide open. People like you are so rare in a world where most just work for the sake of it. You've handled everything with such care and dedication, and I am beyond grateful to have met you.",
+    name: "Tarini",
+    company: "Fame Spread Media",
+    featured: true,
   },
   {
-    id: "2",
+    id: "ronalyn",
     quote:
-      "Reach out to 2–3 past clients and ask for a few lines. These are your most powerful social proof.",
-    name: "Client Name",
-    company: "Company / Project",
-  },
-  {
-    id: "3",
-    quote:
-      "A specific outcome — 'our engagement doubled', 'sold out in a week' — is worth far more than a generic compliment.",
-    name: "Client Name",
-    company: "Company / Project",
+      "Suruchi did a wonderful job on our packaging design. The client really appreciated how clean and clear the design was. She was easy to work with, took feedback well, and executed everything thoughtfully.",
+    name: "Ronalyn Romero",
+    company: "Executive Virtual Assistant",
   },
 ];
 
@@ -69,29 +63,63 @@ export function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.id}
-              className="bg-pale flex-shrink-0 hover:-translate-y-1.5 transition-transform duration-300"
+              className="bg-pale flex-shrink-0 hover:-translate-y-1.5 transition-transform duration-300 relative"
               style={{
-                minWidth: 340,
+                minWidth: t.featured ? 480 : 340,
+                maxWidth: t.featured ? 520 : 380,
                 scrollSnapAlign: "start",
-                border: "1px solid rgba(28,25,22,0.09)",
-                padding: "2.2rem",
+                border: t.featured
+                  ? "1px solid rgba(196,75,42,0.25)"
+                  : "1px solid rgba(28,25,22,0.09)",
+                padding: "2.4rem 2.2rem 2.2rem",
               }}
             >
+              {/* Decorative quote mark for featured */}
+              {t.featured && (
+                <span
+                  className="font-serif absolute select-none"
+                  style={{
+                    top: "0.4rem",
+                    left: "1.2rem",
+                    fontSize: "4rem",
+                    lineHeight: 1,
+                    color: "var(--rust)",
+                    opacity: 0.35,
+                    fontStyle: "italic",
+                    fontWeight: 700,
+                  }}
+                >
+                  &ldquo;
+                </span>
+              )}
               <p
                 className="font-serif italic font-extralight"
                 style={{
-                  fontSize: "1rem",
+                  fontSize: t.featured ? "1.02rem" : "1rem",
                   lineHeight: 1.75,
-                  opacity: 0.78,
+                  opacity: 0.82,
                   marginBottom: "1.6rem",
+                  position: "relative",
+                  zIndex: 1,
                 }}
               >
-                &ldquo;{t.quote}&rdquo;
+                {t.featured ? t.quote : `\u201C${t.quote}\u201D`}
               </p>
-              <div>
+              <div
+                style={{
+                  paddingTop: "1rem",
+                  borderTop: t.featured
+                    ? "1px solid rgba(196,75,42,0.2)"
+                    : "1px solid rgba(28,25,22,0.08)",
+                }}
+              >
                 <strong
                   className="block font-serif font-bold"
-                  style={{ fontSize: "0.95rem", marginBottom: "0.2rem" }}
+                  style={{
+                    fontSize: "0.95rem",
+                    marginBottom: "0.2rem",
+                    color: t.featured ? "var(--rust)" : "var(--ink)",
+                  }}
                 >
                   {t.name}
                 </strong>
@@ -101,7 +129,7 @@ export function Testimonials() {
                     fontSize: "0.65rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    opacity: 0.4,
+                    opacity: 0.5,
                   }}
                 >
                   {t.company}

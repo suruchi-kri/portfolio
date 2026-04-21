@@ -1,7 +1,6 @@
 "use client";
 
-import { CustomCursor } from "@/components/CustomCursor";
-import { Header } from "@/components/Header";
+import { DesignToolShell } from "@/components/chrome/DesignToolShell";
 import { Hero } from "@/components/Hero";
 import { SkillsTicker } from "@/components/SkillsTicker";
 import { WorkSection } from "@/components/WorkSection";
@@ -13,9 +12,7 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <>
-      <CustomCursor />
-      <Header />
+    <DesignToolShell>
       <Hero />
       <SkillsTicker />
       <WorkSection />
@@ -24,6 +21,6 @@ export default function Home() {
       <Testimonials />
       <ContactSection />
       <Footer />
-    </>
+    </DesignToolShell>
   );
 }

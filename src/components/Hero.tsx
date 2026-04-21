@@ -24,11 +24,11 @@ export function Hero() {
       id="hero"
       className="relative overflow-hidden"
       style={{
-        minHeight: "100vh",
+        minHeight: "min(85vh, 720px)",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
-        padding: "0 3rem 4.5rem",
+        padding: "2.5rem 3rem 3.5rem",
       }}
     >
       {/* Background marquee text */}
@@ -60,38 +60,52 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Spinning badge */}
+      {/* Spinning badge - bigger now */}
       <div
         className="absolute hidden md:block"
         style={{
-          top: "28%",
-          right: "5.5%",
-          width: 115,
-          height: 115,
+          top: "24%",
+          right: "5%",
+          width: 160,
+          height: 160,
           animation: "spin-slow 22s linear infinite",
         }}
       >
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             id="cp"
-            d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"
+            d="M80,80 m-64,0 a64,64 0 1,1 128,0 a64,64 0 1,1 -128,0"
             fill="none"
           />
           <text
             fontFamily="var(--font-dm-mono), DM Mono, monospace"
-            fontSize="10"
+            fontSize="11"
             fill="#1C1916"
-            opacity="0.45"
-            letterSpacing="2.8"
+            opacity="0.5"
+            letterSpacing="3"
           >
-            <textPath href="#cp">DELHI · DESIGNER · FREELANCE · </textPath>
+            <textPath href="#cp">FREELANCE · VISUAL DESIGNER · FREELANCE · VISUAL DESIGNER · </textPath>
           </text>
-          <circle cx="60" cy="60" r="9" fill="var(--rust)" />
+          <circle cx="80" cy="80" r="12" fill="var(--rust)" />
         </svg>
       </div>
 
       {/* Hero content */}
       <motion.div variants={stagger} initial="hidden" animate="show">
+        {/* Name — prominent, aligned flush left */}
+        <motion.p
+          variants={fadeUp}
+          className="font-serif"
+          style={{
+            fontSize: "clamp(1.1rem, 1.6vw, 1.6rem)",
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
+            color: "var(--rust)",
+            marginBottom: "0.4rem",
+          }}
+        >
+          Suruchi Kumari
+        </motion.p>
         <motion.p
           variants={fadeUp}
           style={{
@@ -103,7 +117,7 @@ export function Hero() {
             marginBottom: "1.3rem",
           }}
         >
-          Suruchi Kumari — Visual Designer · New Delhi, India
+          Visual Designer · Open to Remote Work
         </motion.p>
 
         <motion.h1
@@ -161,7 +175,7 @@ export function Hero() {
           </div>
           <div style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: "0.7rem", opacity: 0.45, letterSpacing: "0.05em" }}>
             <strong className="block font-serif font-bold text-ink" style={{ fontSize: "1.5rem", opacity: 1 }}>
-              148
+              149
             </strong>
             Appreciations
           </div>

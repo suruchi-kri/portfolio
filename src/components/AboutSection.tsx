@@ -2,16 +2,6 @@
 
 import { ScrollReveal } from "./ScrollReveal";
 
-const skills = [
-  "Brand Identity",
-  "Packaging",
-  "Social Media Systems",
-  "UI/UX",
-  "Web Design",
-  "Campaigns",
-  "Art Direction",
-];
-
 const tools = ["Figma", "Photoshop", "Illustrator", "WordPress", "Divi"];
 
 export function AboutSection() {
@@ -27,20 +17,20 @@ export function AboutSection() {
         alignItems: "center",
       }}
     >
-      {/* Photo placeholder */}
+      {/* Photo */}
       <ScrollReveal>
         <div
-          className="bg-cream relative overflow-hidden flex items-center justify-center"
-          style={{
-            aspectRatio: "3/4",
-            fontFamily: "var(--font-fraunces), serif",
-            fontSize: "8rem",
-            color: "rgba(28,25,22,0.06)",
-          }}
+          className="relative overflow-hidden"
+          style={{ aspectRatio: "3/4" }}
         >
-          ✦
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/About me.jpg"
+            alt="Suruchi Kumari"
+            className="w-full h-full object-cover"
+          />
           <div
-            className="absolute"
+            className="absolute pointer-events-none"
             style={{ inset: 0, border: "1px solid rgba(28,25,22,0.08)" }}
           />
           <div
@@ -66,21 +56,6 @@ export function AboutSection() {
 
       {/* Content */}
       <div>
-        <ScrollReveal>
-          <p
-            style={{
-              fontFamily: "var(--font-dm-mono), monospace",
-              fontSize: "0.7rem",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              opacity: 0.4,
-              marginBottom: "1.4rem",
-            }}
-          >
-            About Me
-          </p>
-        </ScrollReveal>
-
         <ScrollReveal delay={0.1}>
           <h2
             className="font-serif font-extralight"
@@ -101,28 +76,105 @@ export function AboutSection() {
 
         <ScrollReveal delay={0.2}>
           <p
+            className="font-serif italic"
+            style={{
+              fontSize: "1.02rem",
+              lineHeight: 1.55,
+              fontWeight: 500,
+              color: "var(--rust)",
+              marginBottom: "1rem",
+              maxWidth: 480,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            I don&apos;t just design — I shape how brands are seen, felt, and
+            remembered.
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.25}>
+          <p
             style={{
               fontFamily: "var(--font-dm-mono), monospace",
               fontSize: "0.82rem",
               lineHeight: 1.85,
-              opacity: 0.6,
-              marginBottom: "2rem",
-              maxWidth: 440,
+              opacity: 0.65,
+              marginBottom: "1.6rem",
+              maxWidth: 480,
             }}
           >
-            I&apos;m Suruchi — a visual designer based in New Delhi with a
-            strong eye for brand storytelling, digital experiences, and design
-            systems. From skincare brand identities to app UI overhauls, I work
-            across the full visual spectrum. Currently at Transformative Learning
-            Solutions, and always open to exciting freelance work.
+            I&apos;m Suruchi, a visual designer driven by storytelling,
+            digital experiences, and design systems that actually work. From
+            building brands to rethinking app interfaces, I create visuals
+            that cut through noise and leave an impact. My approach is equal
+            parts instinct and intention — where aesthetics meet strategy.
+            Currently freelancing, I&apos;m constantly pushing boundaries and
+            refining my craft. Open to remote work and full-time roles where I
+            can create work that stands out.
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.3}>
+          <div
+            style={{
+              borderLeft: "2px solid var(--rust)",
+              paddingLeft: "1rem",
+              marginBottom: "2rem",
+              maxWidth: 480,
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-dm-mono), monospace",
+                fontSize: "0.62rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                opacity: 0.45,
+                marginBottom: "0.4rem",
+              }}
+            >
+              Education
+            </p>
+            <p
+              className="font-serif"
+              style={{
+                fontSize: "0.95rem",
+                fontWeight: 600,
+                marginBottom: "0.2rem",
+              }}
+            >
+              B. Des
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-dm-mono), monospace",
+                fontSize: "0.72rem",
+                opacity: 0.55,
+              }}
+            >
+              National Institute of Fashion Technology, New Delhi
+            </p>
+          </div>
+        </ScrollReveal>
+
+        {/* Tools — styled as floating pills */}
+        <ScrollReveal delay={0.35}>
+          <p
+            style={{
+              fontFamily: "var(--font-dm-mono), monospace",
+              fontSize: "0.62rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              opacity: 0.45,
+              marginBottom: "0.8rem",
+            }}
+          >
+            Tools
+          </p>
           <div className="flex flex-wrap" style={{ gap: "0.45rem", marginBottom: "2.2rem" }}>
-            {skills.map((skill) => (
+            {tools.map((tool) => (
               <span
-                key={skill}
+                key={tool}
                 className="rounded-full hover:bg-ink hover:text-cream hover:border-ink transition-all duration-200"
                 style={{
                   padding: "0.3rem 0.85rem",
@@ -133,35 +185,7 @@ export function AboutSection() {
                   textTransform: "uppercase",
                 }}
               >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.3}>
-          <div
-            className="flex items-center flex-wrap"
-            style={{ gap: "1.2rem", opacity: 0.4, marginBottom: "2.5rem" }}
-          >
-            {tools.map((tool, i) => (
-              <span key={tool} className="flex items-center" style={{ gap: "1.2rem" }}>
-                <span
-                  style={{
-                    fontFamily: "var(--font-dm-mono), monospace",
-                    fontSize: "0.65rem",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {tool}
-                </span>
-                {i < tools.length - 1 && (
-                  <span
-                    className="bg-ink rounded-full"
-                    style={{ width: 4, height: 4 }}
-                  />
-                )}
+                {tool}
               </span>
             ))}
           </div>

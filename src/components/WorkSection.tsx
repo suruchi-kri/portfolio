@@ -9,8 +9,7 @@ interface Project {
   title: string;
   category: string;
   filterCat: string;
-  gradient: string;
-  shortLabel: string;
+  coverImage: string;
   behanceUrl: string;
   views: number;
   appreciations: number;
@@ -21,56 +20,70 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: "route-gt",
+    title: "Route GT — Branding Project",
+    category: "Branding · Logo · Event Collateral",
+    filterCat: "branding",
+    coverImage: "/Route GT-Branding Project.jpg",
+    behanceUrl:
+      "https://www.behance.net/gallery/247751875/Route-GT-Branding-Project",
+    views: 30,
+    appreciations: 6,
+    note: "newest",
+    span: "p1",
+    aspect: "808/632",
+  },
+  {
     id: "blog-uiux",
     title: "Blog Website — UI/UX Design",
     category: "UI/UX · Web Design · Figma + WordPress",
     filterCat: "ux",
-    gradient: "linear-gradient(135deg, #1C1916, #2563A8)",
-    shortLabel: "Blog",
-    behanceUrl: "https://www.behance.net/gallery/203849335/Blog-Website-UIUX-Design",
+    coverImage: "/Blog Website-UI:UX Design.png",
+    behanceUrl:
+      "https://www.behance.net/gallery/203849335/Blog-Website-UIUX-Design",
     views: 204,
     appreciations: 11,
     note: "most viewed",
-    span: "p1",
-    aspect: "16/9",
+    span: "p2",
+    aspect: "17/12",
   },
   {
     id: "splitwise",
     title: "Splitwise App Redesign",
     category: "UI/UX · App Redesign",
     filterCat: "ux",
-    gradient: "linear-gradient(135deg, #1F4068, #1B262C)",
-    shortLabel: "Split",
-    behanceUrl: "https://www.behance.net/gallery/208693691/UIUX-App-Redesign-Splitwise",
-    views: 162,
-    appreciations: 11,
-    span: "p2",
-    aspect: "4/3",
+    coverImage: "/Splitwise App Redesign.png",
+    behanceUrl:
+      "https://www.behance.net/gallery/208693691/UIUX-App-Redesign-Splitwise",
+    views: 163,
+    appreciations: 10,
+    span: "p3",
+    aspect: "5/3",
   },
   {
     id: "skincare-social",
     title: "Skincare Brand — Social Media System",
     category: "Branding · Social Media",
     filterCat: "social",
-    gradient: "linear-gradient(135deg, #D4A5A5, #9E6B8A)",
-    shortLabel: "Skin",
-    behanceUrl: "https://www.behance.net/gallery/211075727/Branding-Social-Media-Posts-for-Skincare-Brand",
-    views: 87,
-    appreciations: 3,
-    span: "p3",
-    aspect: "4/3",
+    coverImage: "/Skincare Brand-Social Media System.png",
+    behanceUrl:
+      "https://www.behance.net/gallery/211075727/Branding-Social-Media-Posts-for-Skincare-Brand",
+    views: 88,
+    appreciations: 2,
+    span: "p4",
+    aspect: "852/634",
   },
   {
     id: "nat-habit",
     title: "Nat Habit Packaging",
     category: "Packaging Design",
     filterCat: "packaging",
-    gradient: "linear-gradient(135deg, #4A7C59, #C9973A)",
-    shortLabel: "Nat",
-    behanceUrl: "https://www.behance.net/gallery/222087787/Nat-Habit-Packaging-Design",
-    views: 39,
-    appreciations: 3,
-    span: "p4",
+    coverImage: "/Nat habit Packaging.png",
+    behanceUrl:
+      "https://www.behance.net/gallery/222087787/Nat-Habit-Packaging-Design",
+    views: 41,
+    appreciations: 2,
+    span: "p5",
     aspect: "1/1",
   },
   {
@@ -78,39 +91,39 @@ const projects: Project[] = [
     title: "Little Hanoi Egg Coffee",
     category: "Rebranding",
     filterCat: "branding",
-    gradient: "linear-gradient(135deg, #C44B2A, #F5C842)",
-    shortLabel: "LH",
-    behanceUrl: "https://www.behance.net/gallery/218242219/Rebranding-Little-Hanoi-Egg-Coffee",
+    coverImage: "/Little Hanoi Egg Coffee.png",
+    behanceUrl:
+      "https://www.behance.net/gallery/218242219/Rebranding-Little-Hanoi-Egg-Coffee",
     views: 72,
     appreciations: 5,
-    span: "p5",
-    aspect: "1/1",
+    span: "p6",
+    aspect: "1700/1012",
   },
   {
     id: "skincare-launch",
     title: "Product Launch Campaign — Skincare Brand",
     category: "Social Media · Campaign",
     filterCat: "social",
-    gradient: "linear-gradient(135deg, #F9E4D4, #C44B2A, #1C1916)",
-    shortLabel: "Launch",
-    behanceUrl: "https://www.behance.net/gallery/221777787/Product-Launch-Campaign-for-a-Skincare-Brand",
+    coverImage: "/Product Launch Campaign-Skincare Brand.png",
+    behanceUrl:
+      "https://www.behance.net/gallery/221777787/Product-Launch-Campaign-for-a-Skincare-Brand",
     views: 80,
     appreciations: 5,
-    span: "p6",
-    aspect: "16/9",
+    span: "p7",
+    aspect: "1080/700",
   },
   {
     id: "dating-app",
     title: "Dating App — Carousel & Sticker Pack",
     category: "Social Media · Illustration",
     filterCat: "social",
-    gradient: "linear-gradient(135deg, #FF6B6B, #9B7EA6)",
-    shortLabel: "Date",
-    behanceUrl: "https://www.behance.net/gallery/216803361/Social-Media-Carousel-Sticker-Pack-for-a-Dating-App",
+    coverImage: "/Dating App- Carousel & Sticker Pack.png",
+    behanceUrl:
+      "https://www.behance.net/gallery/216803361/Social-Media-Carousel-Sticker-Pack-for-a-Dating-App",
     views: 44,
     appreciations: 6,
-    span: "p7",
-    aspect: "16/9",
+    span: "p8",
+    aspect: "3/2",
   },
 ];
 
@@ -123,20 +136,21 @@ const filters = [
 ];
 
 const spanMap: Record<string, string> = {
-  p1: "7",
-  p2: "5",
-  p3: "5",
-  p4: "4",
-  p5: "3",
-  p6: "6",
-  p7: "6",
+  p1: "7", // Route GT (featured)
+  p2: "5", // Blog
+  p3: "5", // Splitwise
+  p4: "4", // Skincare social
+  p5: "3", // Nat Habit
+  p6: "6", // Little Hanoi
+  p7: "6", // Skincare launch
+  p8: "12", // Dating app (full width)
 };
 
 function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div
       layout
-      className="proj-card relative overflow-hidden bg-pale group"
+      className="proj-card relative overflow-hidden bg-pale group cursor-pointer"
       style={{
         gridColumn: `span ${spanMap[project.span]}`,
         transition: "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)",
@@ -146,29 +160,22 @@ function ProjectCard({ project }: { project: Project }) {
     >
       {/* Image area */}
       <div className="relative overflow-hidden" style={{ aspectRatio: project.aspect }}>
-        <div
-          className="w-full h-full flex items-center justify-center select-none group-hover:scale-105"
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={project.coverImage}
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-105"
           style={{
-            background: project.gradient,
-            fontFamily: "var(--font-fraunces), serif",
-            fontSize: "3.5rem",
-            fontWeight: 700,
-            color: "rgba(255,255,255,0.12)",
             transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
           }}
-        >
-          {project.shortLabel}
-        </div>
+        />
         {/* Hover overlay */}
         <div
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-85"
           style={{
             background: "var(--ink)",
-            opacity: 0,
             transition: "opacity 0.3s",
           }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0.84"; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = "0"; }}
         >
           <span
             style={{
@@ -267,7 +274,7 @@ export function WorkSection() {
           className="font-serif"
           style={{ fontSize: "0.85rem", opacity: 0.28 }}
         >
-          (07)
+          (08)
         </span>
       </div>
 
@@ -324,22 +331,16 @@ export function WorkSection() {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="proj-card relative overflow-hidden bg-pale group"
+              className="proj-card relative overflow-hidden bg-pale cursor-pointer"
               onClick={() => window.open(project.behanceUrl, "_blank")}
             >
               <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                <div
-                  className="w-full h-full flex items-center justify-center select-none"
-                  style={{
-                    background: project.gradient,
-                    fontFamily: "var(--font-fraunces), serif",
-                    fontSize: "3.5rem",
-                    fontWeight: 700,
-                    color: "rgba(255,255,255,0.12)",
-                  }}
-                >
-                  {project.shortLabel}
-                </div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.coverImage}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div style={{ padding: "1.1rem 1.3rem 1.4rem" }}>
                 <p style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: "0.62rem", letterSpacing: "0.15em", textTransform: "uppercase", opacity: 0.38, marginBottom: "0.35rem" }}>

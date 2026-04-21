@@ -18,7 +18,7 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   title: "Suruchi Kumari — Visual Designer",
   description:
-    "Portfolio of Suruchi Kumari, a visual designer specializing in branding, UX design, packaging, and social media. Based in New Delhi, India.",
+    "Portfolio of Suruchi Kumari, a visual designer specializing in branding, UX design, packaging, and social media. Open to remote work worldwide.",
 };
 
 export default function RootLayout({

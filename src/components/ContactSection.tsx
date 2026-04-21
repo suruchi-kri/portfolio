@@ -3,10 +3,9 @@
 import { ScrollReveal } from "./ScrollReveal";
 
 const socials = [
-  { label: "Instagram", href: "https://www.instagram.com/suru_kri/" },
+  { label: "Instagram", href: "https://www.instagram.com/layers.by.suru/" },
   { label: "Behance", href: "https://www.behance.net/suruchikumari" },
   { label: "LinkedIn", href: "http://linkedin.com/in/suruchi-kumari-128203160/" },
-  { label: "YouTube", href: "http://youtube.com/@channel/UCGnGi5tO5cHvNoLNB0xpykw" },
 ];
 
 export function ContactSection() {
@@ -70,7 +69,7 @@ export function ContactSection() {
 
       <ScrollReveal delay={0.2}>
         <a
-          href="mailto:hello@suruchikumari.com"
+          href="mailto:suruchi.skri@gmail.com"
           className="font-serif font-extralight text-ink no-underline hover:text-rust transition-colors duration-200 relative z-[1]"
           style={{
             fontSize: "clamp(0.9rem, 2.2vw, 1.6rem)",
@@ -78,7 +77,7 @@ export function ContactSection() {
             paddingBottom: "0.15rem",
           }}
         >
-          hello@suruchikumari.com
+          suruchi.skri@gmail.com
         </a>
       </ScrollReveal>
 

@@ -12,7 +12,7 @@ export function Footer() {
       }}
     >
       <span>&copy; 2025 Suruchi Kumari</span>
-      <span>Visual Designer — New Delhi</span>
+      <span>Visual Designer — Remote</span>
       <span>Available for work ✦</span>
     </footer>
   );
