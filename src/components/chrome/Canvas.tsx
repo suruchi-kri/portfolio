@@ -23,18 +23,12 @@ export function Canvas({ children }: { children: ReactNode }) {
   return (
     <div
       ref={canvasRef}
-      className="relative overflow-y-auto overflow-x-hidden"
-      style={{
-        background: "var(--canvas-bg)",
-        backgroundImage:
-          "radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px)",
-        backgroundSize: "20px 20px",
-      }}
+      className="canvas-scroll relative overflow-y-auto overflow-x-hidden"
       onMouseMove={handleMouseMove}
     >
-      {/* Artboard label */}
+      {/* Artboard label — desktop only */}
       <div
-        className="chrome-text text-center select-none"
+        className="chrome-text text-center select-none hidden md:block"
         style={{
           padding: "16px 0 8px",
           color: "var(--chrome-text-muted)",
@@ -47,12 +41,7 @@ export function Canvas({ children }: { children: ReactNode }) {
       {/* Artboard */}
       <div
         className="artboard relative mx-auto"
-        style={{
-          maxWidth: 1200,
-          background: "var(--cream)",
-          boxShadow: "0 0 0 1px rgba(255,255,255,0.05), 0 8px 40px rgba(0,0,0,0.4)",
-          marginBottom: 40,
-        }}
+        style={{ background: "var(--cream)" }}
       >
         {children}
       </div>

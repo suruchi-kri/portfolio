@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, DM_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   title: "Suruchi Kumari — Visual Designer",
   description:
     "Portfolio of Suruchi Kumari, a visual designer specializing in branding, UX design, packaging, and social media. Open to remote work worldwide.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

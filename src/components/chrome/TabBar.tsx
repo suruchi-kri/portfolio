@@ -33,11 +33,12 @@ export function TabBar() {
 
   return (
     <div
-      className="chrome-text flex items-end select-none"
+      className="chrome-text hidden md:flex items-end select-none"
       style={{
         height: "var(--tabbar-height)",
         background: "var(--chrome-bg-darker)",
         borderBottom: "1px solid var(--chrome-border)",
+        gridRow: 2,
         gridColumn: "1 / -1",
       }}
     >

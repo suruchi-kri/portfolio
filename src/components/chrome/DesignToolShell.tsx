@@ -10,31 +10,11 @@ import { Canvas } from "./Canvas";
 import { PropertiesPanel } from "./PropertiesPanel";
 import { StatusBar } from "./StatusBar";
 import { MobileHeader } from "./MobileHeader";
-import { useIsMobile } from "./useIsMobile";
-import { useActiveSection } from "./useActiveSection";
 
-function MobileShell({ children }: { children: ReactNode }) {
-  const { canvasRef, setActiveSection } = useDesignTool();
-  useActiveSection(canvasRef, setActiveSection);
-
-  return (
-    <div className="h-screen w-screen overflow-hidden flex flex-col" style={{ background: "var(--cream)" }}>
-      <MobileHeader />
-      <div
-        ref={canvasRef}
-        className="flex-1 overflow-y-auto overflow-x-hidden"
-        style={{ paddingTop: 56, background: "var(--cream)" }}
-      >
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function DesktopShell({ children }: { children: ReactNode }) {
+function Shell({ children }: { children: ReactNode }) {
   const { canvasRef, setActiveTool, togglePanel } = useDesignTool();
 
-  // Keyboard shortcuts
+  // Keyboard shortcuts (desktop; harmless on mobile — no keyboard events)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (
@@ -76,55 +56,55 @@ function DesktopShell({ children }: { children: ReactNode }) {
   }, [canvasRef, setActiveTool, togglePanel]);
 
   return (
-    <div
-      className="h-screen w-screen overflow-hidden"
-      style={{
-        display: "grid",
-        gridTemplateRows:
-          "var(--menubar-height) var(--tabbar-height) 1fr var(--statusbar-height)",
-        gridTemplateColumns:
-          "var(--toolbar-width) var(--ruler-size) 1fr var(--panel-width)",
-      }}
-    >
-      <MenuBar />
-      <TabBar />
-      <ToolBar />
+    <>
+      {/* Mobile-only header — position:fixed, hidden ≥md via its own md:hidden */}
+      <MobileHeader />
 
       <div
-        className="hidden md:flex flex-col"
-        style={{ borderRight: "1px solid var(--chrome-border)" }}
+        className="h-screen w-screen overflow-hidden"
+        style={{
+          display: "grid",
+          gridTemplateRows:
+            "var(--menubar-height) var(--tabbar-height) 1fr var(--statusbar-height)",
+          gridTemplateColumns:
+            "var(--toolbar-width) var(--ruler-size) 1fr var(--panel-width)",
+        }}
       >
-        <RulerCorner />
-        <VerticalRuler />
-      </div>
+        <MenuBar />
+        <TabBar />
+        <ToolBar />
 
-      <div
-        className="flex flex-col overflow-hidden"
-        style={{ gridColumn: "span 1" }}
-      >
-        <HorizontalRuler />
-        <Canvas>{children}</Canvas>
-      </div>
+        <div
+          className="hidden md:flex flex-col"
+          style={{
+            gridRow: 3,
+            gridColumn: 2,
+            borderRight: "1px solid var(--chrome-border)",
+          }}
+        >
+          <RulerCorner />
+          <VerticalRuler />
+        </div>
 
-      <PropertiesPanel />
-      <StatusBar />
-    </div>
+        <div
+          className="flex flex-col overflow-hidden"
+          style={{ gridRow: 3, gridColumn: 3 }}
+        >
+          <HorizontalRuler />
+          <Canvas>{children}</Canvas>
+        </div>
+
+        <PropertiesPanel />
+        <StatusBar />
+      </div>
+    </>
   );
-}
-
-function ShellInner({ children }: { children: ReactNode }) {
-  const isMobile = useIsMobile();
-
-  if (isMobile) {
-    return <MobileShell>{children}</MobileShell>;
-  }
-  return <DesktopShell>{children}</DesktopShell>;
 }
 
 export function DesignToolShell({ children }: { children: ReactNode }) {
   return (
     <DesignToolProvider>
-      <ShellInner>{children}</ShellInner>
+      <Shell>{children}</Shell>
     </DesignToolProvider>
   );
 }

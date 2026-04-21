@@ -68,6 +68,33 @@ body {
   height: 100vh;
 }
 
+/* Canvas — scrollable viewport that contains the artboard */
+.canvas-scroll {
+  background: var(--canvas-bg);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.artboard {
+  max-width: 1200px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 8px 40px rgba(0, 0, 0, 0.4);
+  margin-bottom: 40px;
+}
+
+/* Mobile: artboard fills viewport, no dark canvas, account for fixed MobileHeader */
+@media (max-width: 768px) {
+  .canvas-scroll {
+    background: var(--cream);
+    background-image: none;
+    padding-top: 56px;
+  }
+  .artboard {
+    max-width: 100%;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+}
+
 /* Noise texture — applied to artboard only */
 .artboard::after {
   content: '';
@@ -141,13 +168,15 @@ body {
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { scrollbar-width: none; }
 
-/* Mobile: collapse chrome */
+/* Mobile: collapse chrome — all tracks go to zero, MobileHeader floats on top */
 @media (max-width: 768px) {
   :root {
     --toolbar-width: 0px;
     --panel-width: 0px;
     --ruler-size: 0px;
     --tabbar-height: 0px;
+    --menubar-height: 0px;
+    --statusbar-height: 0px;
   }
 }
 

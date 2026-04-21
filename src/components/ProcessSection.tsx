@@ -1,7 +1,6 @@
 "use client";
 
 import { Binoculars, BookA, PenTool, PackageCheck, LucideIcon } from "lucide-react";
-import { ScrollReveal } from "./ScrollReveal";
 
 interface Step {
   number: string;
@@ -61,17 +60,15 @@ export function ProcessSection() {
         >
           How I Work
         </span>
-        <ScrollReveal>
-          <h2
-            className="font-serif font-extralight text-cream"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3.2rem)",
-              letterSpacing: "-0.03em",
-            }}
-          >
-            My Process
-          </h2>
-        </ScrollReveal>
+        <h2
+          className="font-serif font-extralight text-cream"
+          style={{
+            fontSize: "clamp(2rem, 4vw, 3.2rem)",
+            letterSpacing: "-0.03em",
+          }}
+        >
+          My Process
+        </h2>
       </div>
 
       {/* Steps grid */}
@@ -83,68 +80,67 @@ export function ProcessSection() {
           marginTop: "4rem",
         }}
       >
-        {steps.map((step, i) => {
+        {steps.map((step) => {
           const Icon = step.icon;
           return (
-            <ScrollReveal key={step.number} delay={i * 0.1}>
+            <div
+              key={step.number}
+              className="relative hover:bg-cream/[0.03] transition-all duration-300 h-full"
+              style={{
+                padding: "2rem",
+                border: "1px solid rgba(247,243,237,0.08)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(247,243,237,0.25)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = "rgba(247,243,237,0.08)";
+              }}
+            >
               <div
-                className="relative hover:bg-cream/[0.03] transition-all duration-300 h-full"
+                className="font-serif font-bold"
                 style={{
-                  padding: "2rem",
-                  border: "1px solid rgba(247,243,237,0.08)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(247,243,237,0.25)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(247,243,237,0.08)";
+                  fontSize: "3.5rem",
+                  opacity: 0.08,
+                  lineHeight: 1,
+                  marginBottom: "1.2rem",
+                  letterSpacing: "-0.04em",
                 }}
               >
-                <div
-                  className="font-serif font-bold"
-                  style={{
-                    fontSize: "3.5rem",
-                    opacity: 0.08,
-                    lineHeight: 1,
-                    marginBottom: "1.2rem",
-                    letterSpacing: "-0.04em",
-                  }}
-                >
-                  {step.number}
-                </div>
-                <span
-                  className="absolute"
-                  style={{
-                    top: "2rem",
-                    right: "2rem",
-                    opacity: 0.55,
-                    color: "var(--rust)",
-                  }}
-                >
-                  <Icon size={18} strokeWidth={1.5} />
-                </span>
-                <h3
-                  className="font-serif font-bold"
-                  style={{
-                    fontSize: "1.2rem",
-                    marginBottom: "0.7rem",
-                    letterSpacing: "-0.02em",
-                  }}
-                >
-                  {step.title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-dm-mono), monospace",
-                    fontSize: "0.76rem",
-                    lineHeight: 1.8,
-                    opacity: 0.45,
-                  }}
-                >
-                  {step.description}
-                </p>
+                {step.number}
               </div>
-            </ScrollReveal>
+              <span
+                className="absolute"
+                style={{
+                  top: "2rem",
+                  right: "2rem",
+                  opacity: 0.55,
+                  color: "var(--rust)",
+                }}
+              >
+                <Icon size={18} strokeWidth={1.5} />
+              </span>
+              <h3
+                className="font-serif font-bold"
+                style={{
+                  fontSize: "1.2rem",
+                  marginBottom: "0.7rem",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {step.title}
+              </h3>
+              <p
+                style={{
+                  fontFamily: "var(--font-dm-mono), monospace",
+                  fontSize: "0.76rem",
+                  lineHeight: 1.8,
+                  opacity: 0.45,
+                }}
+              >
+                {step.description}
+              </p>
+            </div>
           );
         })}
       </div>

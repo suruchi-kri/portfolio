@@ -91,7 +91,7 @@ export function Hero() {
       </div>
 
       {/* Hero content */}
-      <motion.div variants={stagger} initial="hidden" animate="show">
+      <motion.div variants={stagger} initial={false} animate="show">
         {/* Name — prominent, aligned flush left */}
         <motion.p
           variants={fadeUp}

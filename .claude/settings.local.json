@@ -1,7 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx create-next-app@latest . --typescript --tailwind --app --eslint --src-dir --import-alias \"@/*\" --use-npm)"
+      "Bash(npx create-next-app@latest . --typescript --tailwind --app --eslint --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:www.behance.net)",
+      "WebSearch",
+      "Bash(sips -g pixelWidth -g pixelHeight \"Route GT-Branding Project.jpg\" \"Blog Website-UI:UX Design.png\" \"Splitwise App Redesign.png\" \"Skincare Brand-Social Media System.png\" \"Little Hanoi Egg Coffee.png\" \"Product Launch Campaign-Skincare Brand.png\" \"Dating App- Carousel & Sticker Pack.png\" \"Nat habit Packaging.png\")",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

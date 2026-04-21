@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ScrollReveal } from "./ScrollReveal";
 
 interface Project {
   id: string;
@@ -259,17 +258,15 @@ export function WorkSection() {
         >
           Selected Work
         </span>
-        <ScrollReveal>
-          <h2
-            className="font-serif font-extralight"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3.2rem)",
-              letterSpacing: "-0.03em",
-            }}
-          >
-            Projects
-          </h2>
-        </ScrollReveal>
+        <h2
+          className="font-serif font-extralight"
+          style={{
+            fontSize: "clamp(2rem, 4vw, 3.2rem)",
+            letterSpacing: "-0.03em",
+          }}
+        >
+          Projects
+        </h2>
         <span
           className="font-serif"
           style={{ fontSize: "0.85rem", opacity: 0.28 }}
@@ -279,81 +276,77 @@ export function WorkSection() {
       </div>
 
       {/* Filters */}
-      <ScrollReveal delay={0.1}>
-        <div className="flex flex-wrap" style={{ gap: "0.5rem", marginBottom: "3.5rem" }}>
-          {filters.map((f) => (
-            <button
-              key={f.value}
-              onClick={() => setActiveFilter(f.value)}
-              style={{
-                padding: "0.45rem 1.1rem",
-                border: "1px solid",
-                borderColor:
-                  activeFilter === f.value
-                    ? "var(--ink)"
-                    : "rgba(28,25,22,0.18)",
-                background:
-                  activeFilter === f.value ? "var(--ink)" : "transparent",
-                color:
-                  activeFilter === f.value ? "var(--cream)" : "var(--ink)",
-                fontFamily: "var(--font-dm-mono), monospace",
-                fontSize: "0.68rem",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                transition: "all 0.2s",
-              }}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-      </ScrollReveal>
+      <div className="flex flex-wrap" style={{ gap: "0.5rem", marginBottom: "3.5rem" }}>
+        {filters.map((f) => (
+          <button
+            key={f.value}
+            onClick={() => setActiveFilter(f.value)}
+            style={{
+              padding: "0.45rem 1.1rem",
+              border: "1px solid",
+              borderColor:
+                activeFilter === f.value
+                  ? "var(--ink)"
+                  : "rgba(28,25,22,0.18)",
+              background:
+                activeFilter === f.value ? "var(--ink)" : "transparent",
+              color:
+                activeFilter === f.value ? "var(--cream)" : "var(--ink)",
+              fontFamily: "var(--font-dm-mono), monospace",
+              fontSize: "0.68rem",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              transition: "all 0.2s",
+            }}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
 
       {/* Grid */}
-      <ScrollReveal delay={0.2}>
-        <motion.div
-          layout
-          className="hidden md:grid"
-          style={{
-            gridTemplateColumns: "repeat(12, 1fr)",
-            gap: "1.4rem",
-          }}
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Mobile: stacked */}
-        <div className="flex flex-col md:hidden" style={{ gap: "1.4rem" }}>
+      <motion.div
+        layout
+        className="hidden md:grid"
+        style={{
+          gridTemplateColumns: "repeat(12, 1fr)",
+          gap: "1.4rem",
+        }}
+      >
+        <AnimatePresence mode="popLayout">
           {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="proj-card relative overflow-hidden bg-pale cursor-pointer"
-              onClick={() => window.open(project.behanceUrl, "_blank")}
-            >
-              <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={project.coverImage}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div style={{ padding: "1.1rem 1.3rem 1.4rem" }}>
-                <p style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: "0.62rem", letterSpacing: "0.15em", textTransform: "uppercase", opacity: 0.38, marginBottom: "0.35rem" }}>
-                  {project.category}
-                </p>
-                <p style={{ fontFamily: "var(--font-fraunces), serif", fontSize: "1.08rem", fontWeight: 700, letterSpacing: "-0.02em" }}>
-                  {project.title}
-                </p>
-              </div>
-            </div>
+            <ProjectCard key={project.id} project={project} />
           ))}
-        </div>
-      </ScrollReveal>
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Mobile: stacked */}
+      <div className="flex flex-col md:hidden" style={{ gap: "1.4rem" }}>
+        {filteredProjects.map((project) => (
+          <div
+            key={project.id}
+            className="proj-card relative overflow-hidden bg-pale cursor-pointer"
+            onClick={() => window.open(project.behanceUrl, "_blank")}
+          >
+            <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.coverImage}
+                alt={project.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div style={{ padding: "1.1rem 1.3rem 1.4rem" }}>
+              <p style={{ fontFamily: "var(--font-dm-mono), monospace", fontSize: "0.62rem", letterSpacing: "0.15em", textTransform: "uppercase", opacity: 0.38, marginBottom: "0.35rem" }}>
+                {project.category}
+              </p>
+              <p style={{ fontFamily: "var(--font-fraunces), serif", fontSize: "1.08rem", fontWeight: 700, letterSpacing: "-0.02em" }}>
+                {project.title}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -76,11 +76,12 @@ export function MenuBar() {
   return (
     <div
       ref={menuRef}
-      className="chrome-text flex items-center select-none"
+      className="chrome-text hidden md:flex items-center select-none"
       style={{
         height: "var(--menubar-height)",
         background: "var(--chrome-bg)",
         borderBottom: "1px solid var(--chrome-border)",
+        gridRow: 1,
         gridColumn: "1 / -1",
       }}
     >

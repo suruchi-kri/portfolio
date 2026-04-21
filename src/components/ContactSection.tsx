@@ -1,7 +1,5 @@
 "use client";
 
-import { ScrollReveal } from "./ScrollReveal";
-
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/layers.by.suru/" },
   { label: "Behance", href: "https://www.behance.net/suruchikumari" },
@@ -30,87 +28,79 @@ export function ContactSection() {
         Hello
       </div>
 
-      <ScrollReveal>
-        <div
-          className="flex items-start justify-center"
+      <div
+        className="flex items-start justify-center"
+        style={{
+          gap: "0.5rem",
+          fontFamily: "var(--font-dm-mono), monospace",
+          fontSize: "0.68rem",
+          lineHeight: 1.6,
+          letterSpacing: "0.18em",
+          textTransform: "uppercase",
+          opacity: 0.4,
+          marginBottom: "1.5rem",
+        }}
+      >
+        <span
+          className="bg-sage rounded-full flex-shrink-0"
           style={{
-            gap: "0.5rem",
-            fontFamily: "var(--font-dm-mono), monospace",
-            fontSize: "0.68rem",
-            lineHeight: 1.6,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            opacity: 0.4,
-            marginBottom: "1.5rem",
+            width: 7,
+            height: 7,
+            marginTop: "0.42em",
+            animation: "pulse-dot 2.2s infinite",
           }}
-        >
-          <span
-            className="bg-sage rounded-full flex-shrink-0"
+        />
+        <span>Available for Freelance &amp; Full-Time Remote</span>
+      </div>
+
+      <h2
+        className="font-serif font-extralight relative z-[1]"
+        style={{
+          fontSize: "clamp(2.5rem, 7vw, 7rem)",
+          letterSpacing: "-0.04em",
+          lineHeight: 0.95,
+          marginBottom: "2.5rem",
+        }}
+      >
+        Let&apos;s make
+        <br />
+        something <em className="italic text-rust font-semibold">great</em>
+      </h2>
+
+      <a
+        href="mailto:suruchi.skri@gmail.com"
+        className="font-serif font-extralight text-ink no-underline hover:text-rust transition-colors duration-200 relative z-[1]"
+        style={{
+          fontSize: "clamp(0.9rem, 2.2vw, 1.6rem)",
+          borderBottom: "1.5px solid var(--rust)",
+          paddingBottom: "0.15rem",
+        }}
+      >
+        suruchi.skri@gmail.com
+      </a>
+
+      <div
+        className="flex justify-center relative z-[1]"
+        style={{ gap: "2.5rem", marginTop: "3.5rem" }}
+      >
+        {socials.map((s) => (
+          <a
+            key={s.label}
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-ink no-underline opacity-40 hover:opacity-100 transition-opacity duration-200"
             style={{
-              width: 7,
-              height: 7,
-              marginTop: "0.42em",
-              animation: "pulse-dot 2.2s infinite",
+              fontFamily: "var(--font-dm-mono), monospace",
+              fontSize: "0.68rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
             }}
-          />
-          <span>Available for Freelance &amp; Full-Time Remote</span>
-        </div>
-      </ScrollReveal>
-
-      <ScrollReveal delay={0.1}>
-        <h2
-          className="font-serif font-extralight relative z-[1]"
-          style={{
-            fontSize: "clamp(2.5rem, 7vw, 7rem)",
-            letterSpacing: "-0.04em",
-            lineHeight: 0.95,
-            marginBottom: "2.5rem",
-          }}
-        >
-          Let&apos;s make
-          <br />
-          something <em className="italic text-rust font-semibold">great</em>
-        </h2>
-      </ScrollReveal>
-
-      <ScrollReveal delay={0.2}>
-        <a
-          href="mailto:suruchi.skri@gmail.com"
-          className="font-serif font-extralight text-ink no-underline hover:text-rust transition-colors duration-200 relative z-[1]"
-          style={{
-            fontSize: "clamp(0.9rem, 2.2vw, 1.6rem)",
-            borderBottom: "1.5px solid var(--rust)",
-            paddingBottom: "0.15rem",
-          }}
-        >
-          suruchi.skri@gmail.com
-        </a>
-      </ScrollReveal>
-
-      <ScrollReveal delay={0.3}>
-        <div
-          className="flex justify-center relative z-[1]"
-          style={{ gap: "2.5rem", marginTop: "3.5rem" }}
-        >
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-ink no-underline opacity-40 hover:opacity-100 transition-opacity duration-200"
-              style={{
-                fontFamily: "var(--font-dm-mono), monospace",
-                fontSize: "0.68rem",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-              }}
-            >
-              {s.label}
-            </a>
-          ))}
-        </div>
-      </ScrollReveal>
+          >
+            {s.label}
+          </a>
+        ))}
+      </div>
     </section>
   );
 }

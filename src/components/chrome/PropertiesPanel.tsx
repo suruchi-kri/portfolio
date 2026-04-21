@@ -166,6 +166,8 @@ export function PropertiesPanel() {
         width: "var(--panel-width)",
         background: "var(--chrome-bg)",
         borderLeft: "1px solid var(--chrome-border)",
+        gridRow: 3,
+        gridColumn: 4,
       }}
     >
       {/* Panel header — just "Design" */}

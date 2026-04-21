@@ -115,6 +115,8 @@ export function ToolBar() {
         borderRight: "1px solid var(--chrome-border)",
         paddingTop: 8,
         gap: 2,
+        gridRow: 3,
+        gridColumn: 1,
       }}
     >
       {tools.map((tool) => (

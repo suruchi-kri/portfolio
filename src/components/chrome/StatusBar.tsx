@@ -16,14 +16,14 @@ export function StatusBar() {
 
   return (
     <div
-      className="chrome-text select-none"
+      className="chrome-text select-none hidden md:grid"
       style={{
         height: "var(--statusbar-height)",
         background: "var(--chrome-bg-darker)",
         borderTop: "1px solid var(--chrome-border)",
         padding: "0 12px",
+        gridRow: 4,
         gridColumn: "1 / -1",
-        display: "grid",
         gridTemplateColumns: "1fr auto 1fr",
         alignItems: "center",
       }}

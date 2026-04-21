@@ -1,7 +1,6 @@
 "use client";
 
 import { Quote } from "lucide-react";
-import { ScrollReveal } from "./ScrollReveal";
 
 const testimonials = [
   {
@@ -39,22 +38,19 @@ export function Testimonials() {
         >
           Kind Words
         </span>
-        <ScrollReveal>
-          <h2
-            className="font-serif font-extralight"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3.2rem)",
-              letterSpacing: "-0.03em",
-            }}
-          >
-            What Clients Say
-          </h2>
-        </ScrollReveal>
+        <h2
+          className="font-serif font-extralight"
+          style={{
+            fontSize: "clamp(2rem, 4vw, 3.2rem)",
+            letterSpacing: "-0.03em",
+          }}
+        >
+          What Clients Say
+        </h2>
       </div>
 
       {/* Grid: 2 columns on desktop, 1 on mobile */}
-      <ScrollReveal delay={0.1}>
-        <div className="testimonial-grid">
+      <div className="testimonial-grid">
           {testimonials.map((t) => (
             <div key={t.id} className="testimonial-item">
               {/* Card */}
@@ -120,8 +116,7 @@ export function Testimonials() {
               </div>
             </div>
           ))}
-        </div>
-      </ScrollReveal>
+      </div>
     </section>
   );
 }
