@@ -280,9 +280,11 @@ export function WorkSection() {
         {filters.map((f) => (
           <button
             key={f.value}
+            type="button"
             onClick={() => setActiveFilter(f.value)}
             style={{
-              padding: "0.45rem 1.1rem",
+              padding: "0.7rem 1.2rem",
+              minHeight: 44,
               border: "1px solid",
               borderColor:
                 activeFilter === f.value
@@ -297,6 +299,8 @@ export function WorkSection() {
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               transition: "all 0.2s",
+              touchAction: "manipulation",
+              cursor: "pointer",
             }}
           >
             {f.label}
