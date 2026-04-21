@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useDesignTool } from "./DesignToolContext";
 
 const navItems = [
-  { id: "hero", label: "Home" },
+  { id: "hero", label: "Suruchi Kumari" },
   { id: "work", label: "Work" },
-  { id: "about", label: "About" },
+  { id: "about", label: "About Me" },
   { id: "process", label: "Process" },
-  { id: "testimonials", label: "Kind Words" },
+  { id: "testimonials", label: "Testimonials" },
   { id: "contact", label: "Contact" },
 ];
 

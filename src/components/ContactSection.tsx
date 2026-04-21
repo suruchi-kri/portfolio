@@ -32,11 +32,12 @@ export function ContactSection() {
 
       <ScrollReveal>
         <div
-          className="flex items-center justify-center"
+          className="flex items-start justify-center"
           style={{
             gap: "0.5rem",
             fontFamily: "var(--font-dm-mono), monospace",
             fontSize: "0.68rem",
+            lineHeight: 1.6,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
             opacity: 0.4,
@@ -44,10 +45,15 @@ export function ContactSection() {
           }}
         >
           <span
-            className="bg-sage rounded-full"
-            style={{ width: 7, height: 7, animation: "pulse-dot 2.2s infinite" }}
+            className="bg-sage rounded-full flex-shrink-0"
+            style={{
+              width: 7,
+              height: 7,
+              marginTop: "0.42em",
+              animation: "pulse-dot 2.2s infinite",
+            }}
           />
-          Available for Freelance &amp; Full-Time Remote
+          <span>Available for Freelance &amp; Full-Time Remote</span>
         </div>
       </ScrollReveal>
 

@@ -15,7 +15,7 @@ interface Tool {
 const tools: Tool[] = [
   {
     id: "move",
-    label: "Who is this Designer?",
+    label: "Who Am I?",
     shortcut: "V",
     section: "hero",
     icon: (
@@ -28,7 +28,7 @@ const tools: Tool[] = [
   },
   {
     id: "frame",
-    label: "Projects She Did",
+    label: "Projects I've Done",
     shortcut: "F",
     section: "work",
     icon: (
@@ -71,7 +71,7 @@ const tools: Tool[] = [
   },
   {
     id: "eyedropper",
-    label: "Kind Words",
+    label: "Kind Words About Me",
     shortcut: "I",
     section: "testimonials",
     icon: (

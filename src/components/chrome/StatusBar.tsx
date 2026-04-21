@@ -16,17 +16,23 @@ export function StatusBar() {
 
   return (
     <div
-      className="chrome-text flex items-center justify-between select-none"
+      className="chrome-text select-none"
       style={{
         height: "var(--statusbar-height)",
         background: "var(--chrome-bg-darker)",
         borderTop: "1px solid var(--chrome-border)",
         padding: "0 12px",
         gridColumn: "1 / -1",
+        display: "grid",
+        gridTemplateColumns: "1fr auto 1fr",
+        alignItems: "center",
       }}
     >
       {/* Left — section + coords */}
-      <div className="flex items-center" style={{ gap: 16, fontSize: 10 }}>
+      <div
+        className="flex items-center"
+        style={{ gap: 16, fontSize: 10, justifySelf: "start" }}
+      >
         <span style={{ color: "var(--chrome-text)" }}>
           {sectionLabels[activeSection] || "Portfolio"}
         </span>
@@ -35,13 +41,22 @@ export function StatusBar() {
         </span>
       </div>
 
-      {/* Center */}
-      <span style={{ color: "var(--chrome-text-muted)", fontSize: 10 }}>
+      {/* Center — fixed position regardless of left/right content */}
+      <span
+        style={{
+          color: "var(--chrome-text-muted)",
+          fontSize: 10,
+          justifySelf: "center",
+        }}
+      >
         Portfolio.fig
       </span>
 
       {/* Right — zoom */}
-      <div className="flex items-center" style={{ gap: 8, fontSize: 10 }}>
+      <div
+        className="flex items-center"
+        style={{ gap: 8, fontSize: 10, justifySelf: "end" }}
+      >
         <button
           style={{ background: "none", border: "none", color: "var(--chrome-text-muted)", fontSize: 12, fontFamily: "inherit", padding: "0 4px" }}
         >

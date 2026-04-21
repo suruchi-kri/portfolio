@@ -1,5 +1,6 @@
 "use client";
 
+import { Quote } from "lucide-react";
 import { ScrollReveal } from "./ScrollReveal";
 
 const testimonials = [
@@ -56,32 +57,12 @@ export function Testimonials() {
         <div className="testimonial-grid">
           {testimonials.map((t) => (
             <div key={t.id} className="testimonial-item">
-              {/* Quote mark — outside the card, top-left */}
-              <span
-                className="font-serif select-none pointer-events-none"
-                style={{
-                  position: "absolute",
-                  top: "-2rem",
-                  left: "-0.4rem",
-                  fontSize: "5rem",
-                  lineHeight: 1,
-                  color: "var(--rust)",
-                  opacity: 0.85,
-                  fontStyle: "italic",
-                  fontWeight: 700,
-                  zIndex: 2,
-                }}
-                aria-hidden="true"
-              >
-                &ldquo;
-              </span>
-
               {/* Card */}
               <div
                 className="bg-pale hover:-translate-y-1.5 transition-transform duration-300"
                 style={{
                   border: "1px solid rgba(28,25,22,0.12)",
-                  padding: "3rem 2.2rem 2rem",
+                  padding: "2rem 2.2rem",
                 }}
               >
                 <p
@@ -95,6 +76,19 @@ export function Testimonials() {
                 >
                   {t.quote}
                 </p>
+              {/* Lucide Quote icon — bottom-right of testimonial text */}
+              <div
+                className="flex justify-end select-none pointer-events-none"
+                style={{
+                  marginTop: "-0.6rem",
+                  marginBottom: "1rem",
+                  color: "var(--rust)",
+                  opacity: 0.45,
+                }}
+                aria-hidden="true"
+              >
+                <Quote size={32} strokeWidth={1.25} />
+              </div>
                 <div
                   style={{
                     paddingTop: "1rem",
