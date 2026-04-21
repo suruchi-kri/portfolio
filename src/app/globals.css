@@ -135,6 +135,77 @@ body {
   to { transform: translateX(-50%); }
 }
 
+/* Project card lift on hover (desktop only — mobile has no hover) */
+@media (hover: hover) and (pointer: fine) {
+  .proj-card {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .proj-card:hover {
+    transform: translateY(-7px);
+  }
+}
+
+/* Filter fade-in: remounting the list container on filter change restarts
+   this animation on every card. */
+@keyframes proj-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.work-grid > *,
+.work-list > * {
+  animation: proj-fade-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Mobile hamburger — two bars that morph into an X on .is-open */
+.mobile-hamburger {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.mobile-hamburger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--ink);
+  transform-origin: 50% 50%;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mobile-hamburger.is-open span:first-child {
+  transform: translateY(2.75px) rotate(45deg);
+}
+.mobile-hamburger.is-open span:last-child {
+  transform: translateY(-2.75px) rotate(-45deg);
+}
+
+/* Mobile fullscreen menu — CSS-only show/hide with fade */
+.mobile-menu {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #F7F3ED;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
 ::selection {
   background: var(--rust);
   color: var(--cream);

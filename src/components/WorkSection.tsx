@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface Project {
   id: string;
@@ -147,15 +146,12 @@ const spanMap: Record<string, string> = {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <motion.div
-      layout
-      className="proj-card relative overflow-hidden bg-pale group cursor-pointer"
-      style={{
-        gridColumn: `span ${spanMap[project.span]}`,
-        transition: "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)",
-      }}
-      onClick={() => window.open(project.behanceUrl, "_blank")}
-      whileHover={{ y: -7 }}
+    <a
+      href={project.behanceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="proj-card relative overflow-hidden bg-pale group block no-underline text-ink"
+      style={{ gridColumn: `span ${spanMap[project.span]}` }}
     >
       {/* Image area */}
       <div className="relative overflow-hidden" style={{ aspectRatio: project.aspect }}>
@@ -164,17 +160,12 @@ function ProjectCard({ project }: { project: Project }) {
           src={project.coverImage}
           alt={project.title}
           className="w-full h-full object-cover group-hover:scale-105"
-          style={{
-            transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
-          }}
+          style={{ transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)" }}
         />
         {/* Hover overlay */}
         <div
           className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-85"
-          style={{
-            background: "var(--ink)",
-            transition: "opacity 0.3s",
-          }}
+          style={{ background: "var(--ink)", transition: "opacity 0.3s" }}
         >
           <span
             style={{
@@ -228,7 +219,7 @@ function ProjectCard({ project }: { project: Project }) {
           {project.note ? ` — ${project.note}` : ""}
         </p>
       </div>
-    </motion.div>
+    </a>
   );
 }
 
@@ -308,24 +299,27 @@ export function WorkSection() {
         ))}
       </div>
 
-      {/* Grid */}
-      <motion.div
-        layout
-        className="hidden md:grid"
+      {/* Desktop grid. key={activeFilter} remounts the container on filter
+          change, which restarts the CSS fade-in on every card. */}
+      <div
+        key={activeFilter}
+        className="work-grid hidden md:grid"
         style={{
           gridTemplateColumns: "repeat(12, 1fr)",
           gap: "1.4rem",
         }}
       >
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </AnimatePresence>
-      </motion.div>
+        {filteredProjects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
 
       {/* Mobile: stacked */}
-      <div className="flex flex-col md:hidden" style={{ gap: "1.4rem" }}>
+      <div
+        key={`m-${activeFilter}`}
+        className="work-list flex flex-col md:hidden"
+        style={{ gap: "1.4rem" }}
+      >
         {filteredProjects.map((project) => (
           <a
             key={project.id}

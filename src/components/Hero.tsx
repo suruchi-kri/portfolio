@@ -1,23 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
-const stagger = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.15, delayChildren: 0.15 },
-  },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 26 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
 export function Hero() {
   return (
     <section
@@ -60,7 +42,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Spinning badge - bigger now */}
+      {/* Spinning badge - desktop only */}
       <div
         className="absolute hidden md:block"
         style={{
@@ -91,10 +73,9 @@ export function Hero() {
       </div>
 
       {/* Hero content */}
-      <motion.div variants={stagger} initial={false} animate="show">
+      <div>
         {/* Name — prominent, aligned flush left */}
-        <motion.p
-          variants={fadeUp}
+        <p
           className="font-serif"
           style={{
             fontSize: "clamp(1.1rem, 1.6vw, 1.6rem)",
@@ -105,9 +86,8 @@ export function Hero() {
           }}
         >
           Suruchi Kumari
-        </motion.p>
-        <motion.p
-          variants={fadeUp}
+        </p>
+        <p
           style={{
             fontFamily: "var(--font-dm-mono), monospace",
             fontSize: "0.7rem",
@@ -121,10 +101,9 @@ export function Hero() {
           <span className="hero-eyebrow-sep"> · </span>
           <span className="hero-eyebrow-break" />
           Open to Remote Work
-        </motion.p>
+        </p>
 
-        <motion.h1
-          variants={fadeUp}
+        <h1
           className="font-serif font-extralight"
           style={{
             fontSize: "clamp(3.2rem, 7vw, 6.8rem)",
@@ -139,10 +118,9 @@ export function Hero() {
           <em className="italic text-rust font-semibold">connects</em> and
           <br />
           converts
-        </motion.h1>
+        </h1>
 
-        <motion.div
-          variants={fadeUp}
+        <div
           className="flex items-center flex-wrap"
           style={{ gap: "3rem" }}
         >
@@ -188,8 +166,8 @@ export function Hero() {
             </strong>
             Projects shipped
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
