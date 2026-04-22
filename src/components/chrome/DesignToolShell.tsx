@@ -61,9 +61,9 @@ function Shell({ children }: { children: ReactNode }) {
         style={{
           display: "grid",
           gridTemplateRows:
-            "var(--menubar-height) var(--tabbar-height) 1fr var(--statusbar-height)",
+            "var(--menubar-height) var(--tabbar-height) minmax(0, 1fr) var(--statusbar-height)",
           gridTemplateColumns:
-            "var(--toolbar-width) var(--ruler-size) 1fr var(--panel-width)",
+            "var(--toolbar-width) var(--ruler-size) minmax(0, 1fr) var(--panel-width)",
         }}
       >
         <MenuBar />
@@ -83,7 +83,7 @@ function Shell({ children }: { children: ReactNode }) {
         </div>
 
         <div
-          className="flex flex-col overflow-hidden"
+          className="flex flex-col md:overflow-hidden"
           style={{ gridRow: 3, gridColumn: 3 }}
         >
           <HorizontalRuler />
