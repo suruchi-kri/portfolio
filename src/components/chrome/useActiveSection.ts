@@ -4,6 +4,11 @@ import { useEffect } from "react";
 
 const SECTION_IDS = ["hero", "work", "about", "process", "testimonials", "contact"];
 
+/**
+ * Tracks which section is currently "in view" based on scroll position.
+ * Uses the window viewport as the reference so it works whether the scroll
+ * container is the document (mobile) or the canvas-scroll div (desktop).
+ */
 export function useActiveSection(
   canvasRef: React.RefObject<HTMLDivElement | null>,
   setActiveSection: (id: string) => void
@@ -16,13 +21,10 @@ export function useActiveSection(
 
     const update = () => {
       ticking = false;
-      const containerRect = container.getBoundingClientRect();
-      // Threshold line: 25% down from top of the canvas viewport
-      const threshold = containerRect.top + containerRect.height * 0.25;
+      // Threshold: 25% down from the top of the viewport.
+      const threshold = window.innerHeight * 0.25;
 
       let currentId = SECTION_IDS[0];
-
-      // Walk sections in order; the last one whose top is above the threshold wins
       for (const id of SECTION_IDS) {
         const el = container.querySelector(`#${id}`) as HTMLElement | null;
         if (!el) continue;
@@ -44,14 +46,17 @@ export function useActiveSection(
       }
     };
 
+    // Listen on both the canvas (desktop inner scroll) and window (mobile
+    // document scroll). Whichever is actually scrolling will fire events.
     container.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
-    // Run once on mount
     update();
 
     return () => {
       container.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
   }, [canvasRef, setActiveSection]);

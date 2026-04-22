@@ -57,7 +57,7 @@ function Shell({ children }: { children: ReactNode }) {
   return (
     <>
       <div
-        className="h-screen w-screen overflow-hidden"
+        className="shell-root h-screen w-screen overflow-hidden"
         style={{
           display: "grid",
           gridTemplateRows:

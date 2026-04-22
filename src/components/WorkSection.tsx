@@ -267,7 +267,10 @@ export function WorkSection() {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap" style={{ gap: "0.5rem", marginBottom: "3.5rem" }}>
+      <div
+        className="flex flex-wrap"
+        style={{ gap: "0.5rem", marginBottom: "3.5rem" }}
+      >
         {filters.map((f) => (
           <button
             key={f.value}

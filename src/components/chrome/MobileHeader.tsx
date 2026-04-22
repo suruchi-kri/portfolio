@@ -80,7 +80,7 @@ export function MobileHeader() {
         {/* Hamburger / close — CSS-only icon transitions */}
         <button
           type="button"
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
           className={`mobile-hamburger ${open ? "is-open" : ""}`}

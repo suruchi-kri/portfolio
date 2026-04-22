@@ -68,6 +68,25 @@ body {
   height: 100vh;
 }
 
+/* Mobile: let the body scroll naturally. Inner scroll containers fight
+   touch events on mobile browsers (sticky taps, delayed clicks, and
+   scroll/tap ambiguity). Document-level scrolling is the reliable path. */
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+  .shell-root {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .canvas-scroll {
+    overflow: visible !important;
+    height: auto !important;
+  }
+}
+
 /* Canvas — scrollable viewport that contains the artboard */
 .canvas-scroll {
   background: var(--canvas-bg);
